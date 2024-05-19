@@ -1,0 +1,6 @@
+Slider: 9
+SpinBox: 2
+ListBox: fds
+Slider: 90
+SpinBox: 2
+ListBox: option4
