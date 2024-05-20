@@ -10,13 +10,14 @@
 #include "SpinBox.h"
 #include "ListBox.h"
 #include "Button.h"
+#include "Chess.h"
 using namespace genv;
 class App
 {
     public:
         App(Vector2 windowsSize);
         void event_loop();
-
+        void button_press(Vector2);
     protected:
 
     private:
@@ -24,6 +25,7 @@ class App
     vector<Widget*> chesstable;
     canvas sprites; //invidual piece is 50x50
     int font_size = 20;
+    int field_size = 50;
     Chess game;
 };
 

@@ -7,7 +7,7 @@ App::App(Vector2 windowsize)
       gout.open(windowsize.x,windowsize.y);
     gout << font("LiberationSans-Regular.ttf",font_size);
     menu.push_back(new Button(Vector2(windowsize.x/2,windowsize.y/2),Vector2(windowsize.x/4,100.0f),color(20,50,80),"start!",[](){}));
-    int field_size = 50;
+
     color dark(110,80,40);
     color light(255,250,170);
     sprites.open(300,100);
@@ -39,7 +39,8 @@ App::App(Vector2 windowsize)
                                       ,Vector2(field_size/2,field_size/2)
                                       ,color( ((y%2+x)%2)? light:dark  )
                                       ,to_string(y)+""+to_string(x)
-                                      ,[](){}));
+                                      ,[&](){
+                                          button_press(Vector2(x+1,y+1));  }));
 
         }
     }
@@ -51,6 +52,9 @@ App::App(Vector2 windowsize)
     //gout << stamp(sprites,100,100);
     gout << refresh;
 }
+void App::button_press(Vector2 pos){
+game.TryMove(pos);
+}
 void App::event_loop(){
 event ev;
 while(gin >> ev ){
@@ -58,6 +62,9 @@ while(gin >> ev ){
  for(Widget* item:chesstable){
     item->Update(ev);
     item->Draw();
+ }
+ for(babu item:game.board){
+    gout <<stamp(sprites,50*int(item.fig),50*int(item.csapat),50,50,item.pos.x*field_size-25,item.pos.y*field_size-25);
  }
   //gout <<move_to(10,10) << stamp(sprites,0,0,300,100,10,10);
 gout << refresh;

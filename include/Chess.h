@@ -6,8 +6,8 @@ using namespace std;
 enum tipus{
 king,queen,runner,knight,tower,pawn};
 enum Team{
-dark,
-light};
+light,
+dark};
 struct babu{
     tipus fig;
     Team csapat;
@@ -28,8 +28,11 @@ class Chess
         Chess();
         bool TryMove(Vector2 pos);
 
+         vector<babu> board;
     private:
-        vector<babu> board;
+        void GenNonPawn(Team);
+        Vector2 prewmove;
+
 };
 
 #endif // CHESS_H
