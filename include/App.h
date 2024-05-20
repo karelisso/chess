@@ -15,12 +15,13 @@ class App
 {
     public:
         App(Vector2 windowsSize);
-        run();
-        event_loop();
+        void event_loop();
 
     protected:
 
     private:
+    vector<Widget*> menu;
+    vector<Widget*> chesstable;
     int font_size = 20;
 };
 

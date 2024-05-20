@@ -5,12 +5,13 @@ using namespace genv;
 
 void Button::Draw(){
 gout << move_to(pos.x - scale.x,pos.y-scale.y) << color(col,col,col) << box(scale.x*2,scale.y*2);
+gout <<color(col,10,230) << move_to(pos.x -scale.x,pos.y) << text(label );
 }
 void Button::Update(event ev){
     if(ev.type == ev_mouse){
         if(ev.button == btn_left && isSelected(Vector2(ev.pos_x,ev.pos_y))){
-            col += 10;
-            if(col > 240) col = 10;
+            col += 30;
+            if(col > 220) col = 10;
         }
     }
 }

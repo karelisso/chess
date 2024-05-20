@@ -6,7 +6,6 @@ const int height = 600;
 int main()
 {
     App chess(Vector2(width,height));
-    chess.run();
     chess.event_loop();
     /*
     vector<Widget*> w;
