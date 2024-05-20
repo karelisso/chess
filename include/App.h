@@ -11,6 +11,7 @@
 #include "ListBox.h"
 #include "Button.h"
 #include "Chess.h"
+#include "StaticText.h"
 using namespace genv;
 class App
 {
@@ -23,6 +24,7 @@ class App
     private:
     vector<Widget*> menu;
     vector<Widget*> chesstable;
+    vector<Widget*> chessmisc;
     canvas sprites; //invidual piece is 50x50
     int font_size = 20;
     int field_size = 50;

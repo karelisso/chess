@@ -122,7 +122,7 @@
 1716167888 source:c:\users\user\documents\github\chess_ppke\main.cpp
 	"App.h"
 
-1716186103 c:\users\user\documents\github\chess_ppke\include\app.h
+1716189124 c:\users\user\documents\github\chess_ppke\include\app.h
 	"graphics.hpp"
 	<vector>
 	<fstream>
@@ -134,6 +134,7 @@
 	"ListBox.h"
 	"Button.h"
 	"Chess.h"
+	"StaticText.h"
 
 1716187020 source:c:\users\user\documents\github\chess_ppke\src\app.cpp
 	"App.h"
@@ -146,10 +147,14 @@
 	<vector>
 	"Vector2.h"
 
-1716186821 source:c:\users\user\documents\github\chess_ppke\src\chess.cpp
+1716187416 source:c:\users\user\documents\github\chess_ppke\src\chess.cpp
 	"Chess.h"
 
 1716187400 c:\users\user\documents\github\chess_ppke\include\chess.h
 	<vector>
 	"vector2.h"
+
+1716189297 c:\users\user\documents\github\chess_ppke\include\statictext.h
+	<Widget.h>
+	"Vector2.h"
 
