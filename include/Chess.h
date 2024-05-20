@@ -8,6 +8,10 @@ king,queen,runner,knight,tower,pawn};
 enum Team{
 light,
 dark};
+enum State{
+round_light,
+round_dark,
+game_over};
 struct babu{
     tipus fig;
     Team csapat;
@@ -27,8 +31,9 @@ class Chess
     public:
         Chess();
         bool TryMove(Vector2 pos);
-
+        bool IsMoveLegal(Vector2 next,babu);
          vector<babu> board;
+         State currentState = round_light;
     private:
         void GenNonPawn(Team);
         Vector2 prewmove;

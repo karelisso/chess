@@ -41,7 +41,68 @@ void Chess::GenNonPawn(Team col){
                                  tower));
 }
 bool Chess::TryMove(Vector2 mw){
-
+for(babu item:board){
+    if(item.pos.x == prewmove.x && item.pos.y == prewmove.y && int(item.csapat)== int(currentState) )
+        /*haha i forgot implementing this operatorn */{
+        IsMoveLegal(mw,item);
+    }
+}
 
 prewmove = mw;
+}
+bool Chess::IsMoveLegal(Vector2 next, babu item){
+  vector<Vector2> path;
+  Vector2 direction = next - prewmove;
+switch(item.fig) {
+
+  case pawn:
+  {
+    if(currentState == round_light){
+       if(prewmove.y == 2 && direction.x ==0&& direction.y == 2){
+        path.push_back(prewmove + Vector2(0,2));
+       }
+       if(direction.y == 1 && abs(direction.x) < 2){
+        path.push_back(next);
+       }
+    }
+    if(prewmove.y == 2 && currentState == round_dark){
+        if(prewmove.y == 7&& direction.x ==0&& direction.y == -2){
+        path.push_back(prewmove + Vector2(0,-2));
+       }
+       if(direction.y == -1 && abs(direction.x) < 2){
+        path.push_back(next);
+       }
+    }
+  }
+
+    break;
+case knight:{}
+    if((abs(direction.x) == 2 && abs(direction.y) == 1 )|| (abs(direction.x) == 1 && abs(direction.y) == 2 )){
+        path.push_back(next);
+    }
+    break;
+case runner:{
+if(abs(direction.x)==abs(direction.y)){
+
+}
+}
+    // code block
+    break;
+case tower:{
+    if(direction.x ==0 || direction.y ==0){
+        for(int i=1; i<= direction.x+direction.y; i++){
+            path.push_back(prewmove + Vector2(i*(direction.x >0)?1:-1 ,i*(direction.y>0)?1:-1 ));
+        }
+
+    }
+}
+    // code block
+    break;
+case queen:{}
+    // code block
+    break;
+case king:{}
+    // code block
+    break;
+}
 }

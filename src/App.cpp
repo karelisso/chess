@@ -7,7 +7,7 @@ App::App(Vector2 windowsize)
       gout.open(windowsize.x,windowsize.y);
     gout << font("LiberationSans-Regular.ttf",font_size);
     menu.push_back(new Button(Vector2(windowsize.x/2,windowsize.y/2),Vector2(windowsize.x/4,100.0f),color(20,50,80),"start!",[](){}));
-    chessmisc.push_back(new StaticText(Vector2(500,300) ,Vector2(150,50),"világos köre"));
+    chessmisc.push_back(new StaticText(Vector2(700,300) ,Vector2(150,50),"világos köre"));
     color dark(110,80,40);
     color light(255,250,170);
     sprites.open(300,100);

@@ -1,5 +1,5 @@
 #include "StaticText.h"
-
+using namespace genv;
 void StaticText::Draw(){
 gout <<color(255,255,255) << move_to(pos.x -scale.x,pos.y) << text(label );
 }

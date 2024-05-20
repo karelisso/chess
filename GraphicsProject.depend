@@ -136,7 +136,7 @@
 	"Chess.h"
 	"StaticText.h"
 
-1716187020 source:c:\users\user\documents\github\chess_ppke\src\app.cpp
+1716192816 source:c:\users\user\documents\github\chess_ppke\src\app.cpp
 	"App.h"
 	<fstream>
 
@@ -150,11 +150,14 @@
 1716187416 source:c:\users\user\documents\github\chess_ppke\src\chess.cpp
 	"Chess.h"
 
-1716187400 c:\users\user\documents\github\chess_ppke\include\chess.h
+1716196265 c:\users\user\documents\github\chess_ppke\include\chess.h
 	<vector>
 	"vector2.h"
 
-1716189297 c:\users\user\documents\github\chess_ppke\include\statictext.h
+1716192760 c:\users\user\documents\github\chess_ppke\include\statictext.h
 	<Widget.h>
 	"Vector2.h"
+
+1716189548 source:c:\users\user\documents\github\chess_ppke\src\statictext.cpp
+	"StaticText.h"
 
