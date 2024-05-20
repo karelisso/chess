@@ -10,7 +10,7 @@ OnRelease};
 class Button : public Widget
 {
        public:
-        Button(Vector2 ps,Vector2 sc,string lab,std::function<void()> lamdafunc):Widget(ps,sc),label(lab),lambdafunction(lamdafunc)
+        Button(Vector2 ps,Vector2 sc,genv::color collme,string lab,std::function<void()> lamdafunc):Widget(ps,sc),label(lab),col(collme),lambdafunction(lamdafunc)
         {int i =0;}
         void Draw();
         void Update(genv::event);
@@ -18,9 +18,10 @@ class Button : public Widget
          string GetValue();
          string GetLabel();
          void SetLabel(string);
+         void setcol(genv::color intens) {col = intens;}
     protected:
     std::function<void()> lambdafunction;
-    int col = 100;
+    genv::color col;
     string label;
     private:
 };
