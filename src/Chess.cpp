@@ -60,7 +60,6 @@ prewmove = mw;
 babu Chess::IsMoveLegal(Vector2 next, babu item){
   vector<Vector2> path;
   Vector2 direction = next - prewmove;
-
 switch(item.fig) {
 
   case pawn:
@@ -91,8 +90,12 @@ case knight:{}
     break;
 case runner:{
 if(abs(direction.x)==abs(direction.y)){
-   for(int i=1; i<= direction.x; i++){
-            path.push_back(prewmove + Vector2(i*(direction.x >0)?1:-1 ,i*(direction.y>0)?1:-1 ));
+            int xmul=0;
+            int ymul =0;
+            if(direction.x !=0) xmul = (direction.x >0)?1:-1;
+            if(direction.y !=0) ymul = (direction.y >0)?1:-1;
+   for(int i=1; i<= abs(direction.x) ; i++){
+            path.push_back(prewmove + Vector2((i)*xmul,(i)*ymul));
         }
 }
 }
@@ -100,8 +103,13 @@ if(abs(direction.x)==abs(direction.y)){
     break;
 case tower:{
     if(direction.x ==0 || direction.y ==0){
-        for(int i=1; i<= direction.x+direction.y; i++){
-            path.push_back(prewmove + Vector2(i*(direction.x >0)?1:-1 ,i*(direction.y>0)?1:-1 ));
+
+            int xmul=0;
+            int ymul =0;
+            if(direction.x !=0) xmul = (direction.x >0)?1:-1;
+            if(direction.y !=0) ymul = (direction.y >0)?1:-1;
+        for(int i=1; i<= abs(direction.x) +abs(direction.y) ; i++){
+            path.push_back(prewmove + Vector2(i* xmul,i*ymul ));
         }
 
     }
@@ -110,16 +118,26 @@ case tower:{
     break;
 case queen:{
 if(abs(direction.x)==abs(direction.y)){
-   for(int i=1; i<= direction.x+1; i++){
-            path.push_back(prewmove + Vector2(i*(direction.x >0)?1:-1 ,i*(direction.y>0)?1:-1 ));
+            int xmul=0;
+            int ymul =0;
+            if(direction.x !=0) xmul = (direction.x >0)?1:-1;
+            if(direction.y !=0) ymul = (direction.y >0)?1:-1;
+   for(int i=1; i<= abs(direction.x) ; i++){
+            path.push_back(prewmove + Vector2((1+i)*xmul,(1+i)*ymul));
         }
 }
     if(direction.x ==0 || direction.y ==0){
-        for(int i=1; i<= direction.x+direction.y+10; i++){
-            path.push_back(prewmove + Vector2(i*(direction.x >0)?1:-1 ,i*(direction.y>0)?1:-1 ));
+
+            int xmul=0;
+            int ymul =0;
+            if(direction.x !=0) xmul = (direction.x >0)?1:-1;
+            if(direction.y !=0) ymul = (direction.y >0)?1:-1;
+        for(int i=1; i<= abs(direction.x) +abs(direction.y) ; i++){
+            path.push_back(prewmove + Vector2(i* xmul,i*ymul ));
         }
 
     }
+
 }
 
     break;
@@ -130,10 +148,13 @@ case king:// this going to be hard;
     // code block
     break;
 }
-for(size_t i=0; i<path.size();i++){
-    if(path[i].x == next.x && path[i].y == next.y){
-        item.pos = path[i];
+bool freepath = true;
+Vector2 road;
+for(int i=0;i<path.size();i++){
+    for(int n=0; n< board.size();n++){
+        if(board[n].pos.x == path[i].x && board[n].pos.y == path[i].y) freepath = false;
     }
 }
+if(path.size() >0 && freepath)  item.pos = path[path.size()-1];
 return item;
 }

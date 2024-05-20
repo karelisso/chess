@@ -11,8 +11,8 @@ void Button::Update(event ev){
     if(ev.type == ev_mouse){
         if(ev.button == btn_left && isSelected(Vector2(ev.pos_x,ev.pos_y))){
                 lambdafunction();
-            col.blue += 30;
-            if(col.blue > 220) col.blue = 10;
+            col.blue += 50;
+            if(col.blue > 210) col.blue = 0;
         }
     }
 }
