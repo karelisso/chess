@@ -24,6 +24,7 @@ class App
     vector<Widget*> chesstable;
     canvas sprites; //invidual piece is 50x50
     int font_size = 20;
+    Chess game;
 };
 
 #endif // APP_H

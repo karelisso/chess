@@ -53,19 +53,36 @@
 			<Add library="dxguid" />
 			<Add directory="lib" />
 		</Linker>
+		<Unit filename="include/App.h" />
+		<Unit filename="include/Button.h" />
+		<Unit filename="include/Chess.h" />
 		<Unit filename="include/ListBox.h" />
 		<Unit filename="include/Slider.h" />
 		<Unit filename="include/SpinBox.h" />
 		<Unit filename="include/Transform.h" />
 		<Unit filename="include/Vector2.h" />
 		<Unit filename="include/Widget.h" />
+		<Unit filename="include/knight.h" />
+		<Unit filename="include/pawn.h" />
+		<Unit filename="include/piece.h" />
+		<Unit filename="include/queen.h" />
+		<Unit filename="include/runner.h" />
+		<Unit filename="include/tower.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/App.cpp" />
+		<Unit filename="src/Button.cpp" />
+		<Unit filename="src/Chess.cpp" />
 		<Unit filename="src/ListBox.cpp" />
 		<Unit filename="src/Slider.cpp" />
 		<Unit filename="src/SpinBox.cpp" />
 		<Unit filename="src/Transform.cpp" />
 		<Unit filename="src/Vector2.cpp" />
 		<Unit filename="src/Widget.cpp" />
+		<Unit filename="src/knight.cpp" />
+		<Unit filename="src/piece.cpp" />
+		<Unit filename="src/queen.cpp" />
+		<Unit filename="src/runner.cpp" />
+		<Unit filename="src/tower.cpp" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>

@@ -43,21 +43,23 @@ App::App(Vector2 windowsize)
 
         }
     }
+     gout <<move_to(0,0) << color(30,180,70) << box(800,600);
     for(size_t i=0; i< chesstable.size(); i++){
      chesstable[i]->Draw();
     }
     gout << color(255,255,255);
-    gout << stamp(sprites,100,100);
+    //gout << stamp(sprites,100,100);
     gout << refresh;
 }
 void App::event_loop(){
 event ev;
 while(gin >> ev ){
+        gout <<move_to(0,0) << color(30,180,70) << box(800,600);
  for(Widget* item:chesstable){
     item->Update(ev);
     item->Draw();
  }
-  gout <<move_to(10,10) << stamp(sprites,0,0,300,100,10,10);
+  //gout <<move_to(10,10) << stamp(sprites,0,0,300,100,10,10);
 gout << refresh;
 }
 }
