@@ -14,6 +14,9 @@ prewmove = Vector2(-1,-1);
 GenNonPawn(light);
 GenNonPawn(dark);
 };
+int Chess::getRound(){
+return int(currentState);}
+
 void Chess::GenNonPawn(Team col){
         board.push_back(babu(Vector2(1,1+int(col)*7)
                                  ,col,
@@ -155,6 +158,12 @@ for(int i=0;i<path.size();i++){
         if(board[n].pos.x == path[i].x && board[n].pos.y == path[i].y) freepath = false;
     }
 }
-if(path.size() >0 && freepath)  item.pos = path[path.size()-1];
+prewmove = next;
+if(path.size() >0 && freepath) {
+  item.pos = path[path.size()-1];
+  prewmove = Vector2(-1,-1);
+  if(currentState == round_light) currentState = round_dark;
+  else if (currentState == round_dark) currentState = round_light;
+}
 return item;
 }

@@ -35,6 +35,7 @@ class Chess
          vector<babu> board;
          void wtf(){int i = 1;}
          State currentState = round_light;
+         int getRound();
     private:
         void GenNonPawn(Team);
         Vector2 prewmove;

@@ -7,7 +7,7 @@ App::App(Vector2 windowsize)
       gout.open(windowsize.x,windowsize.y);
     gout << font("LiberationSans-Regular.ttf",font_size);
     menu.push_back(new Button(Vector2(windowsize.x/2,windowsize.y/2),Vector2(windowsize.x/4,100.0f),color(20,50,80),"start!",[](){}));
-    chessmisc.push_back(new StaticText(Vector2(700,300) ,Vector2(150,50),"világos köre"));
+    chessmisc.push_back(new StaticText(Vector2(700,300) ,Vector2(150,50),"Light's round"));
     color dark(110,80,40);
     color light(255,250,170);
     sprites.open(300,100);
@@ -63,7 +63,13 @@ while(gin >> ev ){
     item->Update(ev);
     item->Draw();
  }
+
+    if(game.currentState == round_light) chessmisc[0]->SetLabel("Light's round");
+    if(game.currentState == round_dark) chessmisc[0]->SetLabel("Dark's round");
+    if(game.currentState == game_over) chessmisc[0]->SetLabel("chess mate!");
+
   for(Widget* item:chessmisc){
+
     item->Draw();
     game.wtf();
  }
