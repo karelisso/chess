@@ -10,7 +10,7 @@ Chess::Chess()
                                  ,dark,
                                  pawn));
     }
-
+prewmove = Vector2(-1,-1);
 GenNonPawn(light);
 GenNonPawn(dark);
 };
@@ -40,19 +40,27 @@ void Chess::GenNonPawn(Team col){
                                  ,col,
                                  tower));
 }
-bool Chess::TryMove(Vector2 mw){
-for(babu item:board){
-    if(item.pos.x == prewmove.x && item.pos.y == prewmove.y && int(item.csapat)== int(currentState) )
+void Chess::TryMove(Vector2 mw){
+int i =0;
+    if(prewmove.x != -1 && prewmove.y != -1){
+        for(size_t i=0; i< board.size(); i++){
+        babu* item = &board[i];
+    if(item->pos.x == prewmove.x && item->pos.y == prewmove.y && int(item->csapat)== int(currentState) )
         /*haha i forgot implementing this operatorn */{
-        IsMoveLegal(mw,item);
+      board[i] = IsMoveLegal(mw, board[i]);
+        //item.pos = mw;
     }
 }
+    }
+
+//board.erase(board.begin(),board.end()-2);
 
 prewmove = mw;
 }
-bool Chess::IsMoveLegal(Vector2 next, babu item){
+babu Chess::IsMoveLegal(Vector2 next, babu item){
   vector<Vector2> path;
   Vector2 direction = next - prewmove;
+
 switch(item.fig) {
 
   case pawn:
@@ -83,7 +91,9 @@ case knight:{}
     break;
 case runner:{
 if(abs(direction.x)==abs(direction.y)){
-
+   for(int i=1; i<= direction.x; i++){
+            path.push_back(prewmove + Vector2(i*(direction.x >0)?1:-1 ,i*(direction.y>0)?1:-1 ));
+        }
 }
 }
     // code block
@@ -98,11 +108,32 @@ case tower:{
 }
     // code block
     break;
-case queen:{}
-    // code block
+case queen:{
+if(abs(direction.x)==abs(direction.y)){
+   for(int i=1; i<= direction.x+1; i++){
+            path.push_back(prewmove + Vector2(i*(direction.x >0)?1:-1 ,i*(direction.y>0)?1:-1 ));
+        }
+}
+    if(direction.x ==0 || direction.y ==0){
+        for(int i=1; i<= direction.x+direction.y+10; i++){
+            path.push_back(prewmove + Vector2(i*(direction.x >0)?1:-1 ,i*(direction.y>0)?1:-1 ));
+        }
+
+    }
+}
+
     break;
-case king:{}
+case king:// this going to be hard;
+    {
+        if(abs(direction.x) < 2&& abs(direction.y) <2) path.push_back(next);
+    }
     // code block
     break;
 }
+for(size_t i=0; i<path.size();i++){
+    if(path[i].x == next.x && path[i].y == next.y){
+        item.pos = path[i];
+    }
+}
+return item;
 }

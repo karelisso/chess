@@ -19,6 +19,7 @@ class App
         App(Vector2 windowsSize);
         void event_loop();
         void button_press(Vector2);
+         Chess game;
     protected:
 
     private:
@@ -28,7 +29,7 @@ class App
     canvas sprites; //invidual piece is 50x50
     int font_size = 20;
     int field_size = 50;
-    Chess game;
+
 };
 
 #endif // APP_H

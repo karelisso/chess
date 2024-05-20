@@ -30,9 +30,10 @@ class Chess
 {
     public:
         Chess();
-        bool TryMove(Vector2 pos);
-        bool IsMoveLegal(Vector2 next,babu);
+        void TryMove(Vector2 pos);
+        babu IsMoveLegal(Vector2 next,babu);
          vector<babu> board;
+         void wtf(){int i = 1;}
          State currentState = round_light;
     private:
         void GenNonPawn(Team);

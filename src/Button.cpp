@@ -10,6 +10,7 @@ gout <<color(col) << move_to(pos.x -scale.x,pos.y) << text(label );
 void Button::Update(event ev){
     if(ev.type == ev_mouse){
         if(ev.button == btn_left && isSelected(Vector2(ev.pos_x,ev.pos_y))){
+                lambdafunction();
             col.blue += 30;
             if(col.blue > 220) col.blue = 10;
         }

@@ -39,7 +39,7 @@ App::App(Vector2 windowsize)
                                       ,Vector2(field_size/2,field_size/2)
                                       ,color( ((y%2+x)%2)? light:dark  )
                                       ,to_string(y)+""+to_string(x)
-                                      ,[&](){
+                                      ,[=](){
                                           button_press(Vector2(x+1,y+1));  }));
 
         }
@@ -65,6 +65,7 @@ while(gin >> ev ){
  }
   for(Widget* item:chessmisc){
     item->Draw();
+    game.wtf();
  }
  for(babu item:game.board){
     gout <<stamp(sprites,50*int(item.fig),50*int(item.csapat),50,50,item.pos.x*field_size-25,item.pos.y*field_size-25);
