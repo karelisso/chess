@@ -10,7 +10,7 @@
 #include "SpinBox.h"
 #include "ListBox.h"
 #include "Button.h"
-
+using namespace genv;
 class App
 {
     public:
@@ -22,6 +22,7 @@ class App
     private:
     vector<Widget*> menu;
     vector<Widget*> chesstable;
+    canvas sprites; //invidual piece is 50x50
     int font_size = 20;
 };
 
