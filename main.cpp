@@ -1,18 +1,14 @@
-#include "graphics.hpp"
-#include <vector>
-#include <fstream>
-#include "Vector2.h"
-#include "Transform.h"
-#include "Widget.h"
-#include "Slider.h"
-#include "SpinBox.h"
-#include "ListBox.h"
+#include "App.h"
 using namespace genv;
 
 const int width = 800;
 const int height = 600;
 int main()
 {
+    App chess(Vector2(width,height));
+    chess.run();
+    chess.event_loop();
+    /*
     vector<Widget*> w;
     Widget* selected = 0;
     Slider * first = new Slider(Vector2(150,200),Vector2(100,10),Vector2(0,10),9,"Slider");
@@ -22,12 +18,15 @@ int main()
     SpinBox * second2 = new SpinBox(Vector2(200,80),Vector2(70,10),Vector2(0,10),2,22,"SpinBox");
     ListBox * third = new ListBox(Vector2(400,400),Vector2(100,100),Vector2(0,10),{"fds2","fsd2","fd1s","fds","f3sd","fds","fd1s","f3sd","fd4s","fds4","fs4d","fds2","fds2","fsd2","fd1s","fds","f3sd","fds","fd1s","f3sd","fd4s","fds4","fs4d","fds2"},"ListBox");
     ListBox * third2 = new ListBox(Vector2(600,400),Vector2(80,30),Vector2(0,10),{"option1","option2","option3","option4","option5"},"ListBox");
+    Button* bttn = new Button(Vector2(300,300),Vector2(10,10),"",
+                              [&](){gout << color(100,0,0) << text("woomy");});
     w.push_back(first);
     w.push_back(second);
     w.push_back(third);
     w.push_back(first2);
     w.push_back(second2);
     w.push_back(third2);
+    w.push_back(bttn);
     gout.open(width,height);
     gout << font("LiberationSans-Regular.ttf",15);
     event ev;
@@ -50,5 +49,6 @@ int main()
         myout << item->GetLabel() + ": " + item->GetValue()+"\n";
      }
      myout.close();
+     */
     return 0;
 }

@@ -1,6 +1,7 @@
 Slider: 9
 SpinBox: 2
-ListBox: fds
+ListBox: fds2
 Slider: 90
 SpinBox: 2
-ListBox: option4
+ListBox: option1
+: 
