@@ -175,7 +175,9 @@ bool Chess::attack(int id){
     if(board[id].fig == king) return false;
     if(int(currentState)!= int(board[id].csapat) ){
      // board.erase(board.begin()+(id-1) );
-     board[id].pos = Vector2(10,2);
+
+     board[id].pos = Vector2(10 +board[id].pos.x/3,2 +board[id].pos.x/4);
+     if(board[id].csapat == light) board[id].pos.y += 5;
         return true;
     }
 
