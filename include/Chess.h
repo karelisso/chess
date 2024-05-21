@@ -20,7 +20,9 @@ struct babu{
         pos= _pos;
         csapat = _csapat;
         fig = _fig;
+        down = false;
     }
+    bool down;
     int to_int(){
     return int(fig) +10*pos.x+100*pos.y;
     }
@@ -38,6 +40,7 @@ class Chess
          int getRound();
     private:
         void GenNonPawn(Team);
+        bool attack(int id);
         Vector2 prewmove;
 
 };

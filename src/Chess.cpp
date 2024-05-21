@@ -44,7 +44,6 @@ void Chess::GenNonPawn(Team col){
                                  tower));
 }
 void Chess::TryMove(Vector2 mw){
-int i =0;
     if(prewmove.x != -1 && prewmove.y != -1){
         for(size_t i=0; i< board.size(); i++){
         babu* item = &board[i];
@@ -75,7 +74,7 @@ switch(item.fig) {
         path.push_back(next);
        }
     }
-    if(prewmove.y == 2 && currentState == round_dark){
+    if(currentState == round_dark){
         if(prewmove.y == 7&& direction.x ==0&& direction.y == -2){
         path.push_back(prewmove + Vector2(0,-2));
        }
@@ -120,15 +119,6 @@ case tower:{
     // code block
     break;
 case queen:{
-if(abs(direction.x)==abs(direction.y)){
-            int xmul=0;
-            int ymul =0;
-            if(direction.x !=0) xmul = (direction.x >0)?1:-1;
-            if(direction.y !=0) ymul = (direction.y >0)?1:-1;
-   for(int i=1; i<= abs(direction.x) ; i++){
-            path.push_back(prewmove + Vector2((1+i)*xmul,(1+i)*ymul));
-        }
-}
     if(direction.x ==0 || direction.y ==0){
 
             int xmul=0;
@@ -140,6 +130,15 @@ if(abs(direction.x)==abs(direction.y)){
         }
 
     }
+    if(abs(direction.x)==abs(direction.y)){
+            int xmul=0;
+            int ymul =0;
+            if(direction.x !=0) xmul = (direction.x >0)?1:-1;
+            if(direction.y !=0) ymul = (direction.y >0)?1:-1;
+   for(int i=1; i<= abs(direction.x) ; i++){
+            path.push_back(prewmove + Vector2((i)*xmul,(i)*ymul));
+        }
+}
 
 }
 
@@ -155,7 +154,11 @@ bool freepath = true;
 Vector2 road;
 for(int i=0;i<path.size();i++){
     for(int n=0; n< board.size();n++){
-        if(board[n].pos.x == path[i].x && board[n].pos.y == path[i].y) freepath = false;
+        if(board[n].pos.x == path[i].x && board[n].pos.y == path[i].y){
+                freepath = false;
+          if( board[n].pos.x == next.x && board[n].pos.y == next.y) freepath = attack(n);
+        }
+
     }
 }
 prewmove = next;
@@ -166,4 +169,15 @@ if(path.size() >0 && freepath) {
   else if (currentState == round_dark) currentState = round_light;
 }
 return item;
+}
+bool Chess::attack(int id){
+
+    if(board[id].fig == king) return false;
+    if(int(currentState)!= int(board[id].csapat) ){
+     // board.erase(board.begin()+(id-1) );
+     board[id].pos = Vector2(10,2);
+        return true;
+    }
+
+    return false;
 }
