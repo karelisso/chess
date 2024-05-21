@@ -32,11 +32,11 @@ class Chess
 {
     public:
         Chess();
+        void Init();
         void TryMove(Vector2 pos);
         babu IsMoveLegal(Vector2 next,babu);
          vector<babu> board;
-         void wtf(){int i = 1;}
-         State currentState = round_light;
+         State currentState;
          int getRound();
     private:
         void GenNonPawn(Team);

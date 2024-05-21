@@ -6,8 +6,11 @@ App::App(Vector2 windowsize)
 {
       gout.open(windowsize.x,windowsize.y);
     gout << font("LiberationSans-Regular.ttf",font_size);
-    menu.push_back(new Button(Vector2(windowsize.x/2,windowsize.y/2),Vector2(windowsize.x/4,100.0f),color(20,50,80),"start!",[](){}));
+    menu.push_back(new Button(Vector2(windowsize.x/2,windowsize.y/2),Vector2(windowsize.x/4,100.0f),color(20,50,80),"start!",[=](){startgame(); ingame = true;  }));
+    menu.push_back(new StaticText(Vector2(windowsize.x/2,windowsize.y/2) ,Vector2(150,50),"Start a chess game now!"));
     chessmisc.push_back(new StaticText(Vector2(700,300) ,Vector2(150,50),"Light's round"));
+    chessmisc.push_back(new Button(Vector2(200,500),Vector2(150,50),color(10,10,10),"give up",[=](){ingame = false;}));
+    chessmisc.push_back(new StaticText(Vector2(200,500) ,Vector2(1,1),"Give up"));
     color dark(110,80,40);
     color light(255,250,170);
     sprites.open(300,100);
@@ -59,24 +62,33 @@ void App::event_loop(){
 event ev;
 while(gin >> ev ){
         gout <<move_to(0,0) << color(30,180,70) << box(800,600);
- for(Widget* item:chesstable){
+        if(ingame){
+             for(Widget* item:chesstable){
     item->Update(ev);
     item->Draw();
  }
-
     if(game.currentState == round_light) chessmisc[0]->SetLabel("Light's round");
     if(game.currentState == round_dark) chessmisc[0]->SetLabel("Dark's round");
     if(game.currentState == game_over) chessmisc[0]->SetLabel("chess mate!");
-
   for(Widget* item:chessmisc){
 
     item->Draw();
-    game.wtf();
+    item->Update(ev);
  }
  for(babu item:game.board){
     gout <<stamp(sprites,50*int(item.fig),50*int(item.csapat),50,50,item.pos.x*field_size-25,item.pos.y*field_size-25);
  }
+        }
+else{
+    for(Widget* item:menu){
+        item->Update(ev);
+        item->Draw();
+    }
+}
   //gout <<move_to(10,10) << stamp(sprites,0,0,300,100,10,10);
 gout << refresh;
 }
+}
+void App::startgame(){
+    game.Init();
 }

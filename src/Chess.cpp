@@ -2,17 +2,7 @@
 
 Chess::Chess()
 {
-    for(int i=0; i<8; i++){
-        board.push_back(babu(Vector2(i+1,2)
-                                 ,light,
-                                 pawn));
-           board.push_back(babu(Vector2(i+1,7)
-                                 ,dark,
-                                 pawn));
-    }
-prewmove = Vector2(-1,-1);
-GenNonPawn(light);
-GenNonPawn(dark);
+    Init();
 };
 int Chess::getRound(){
 return int(currentState);}
@@ -42,6 +32,21 @@ void Chess::GenNonPawn(Team col){
      board.push_back(babu(Vector2(8,1+int(col)*7)
                                  ,col,
                                  tower));
+}
+void Chess::Init(){
+    board.clear();
+    for(int i=0; i<8; i++){
+        board.push_back(babu(Vector2(i+1,2)
+                                 ,light,
+                                 pawn));
+        board.push_back(babu(Vector2(i+1,7)
+                                 ,dark,
+                                 pawn));
+    }
+    prewmove = Vector2(-1,-1);
+    GenNonPawn(light);
+    GenNonPawn(dark);
+    currentState = round_light;
 }
 void Chess::TryMove(Vector2 mw){
     if(prewmove.x != -1 && prewmove.y != -1){
